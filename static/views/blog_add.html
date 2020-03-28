@@ -1,0 +1,58 @@
+{{define "blog_add.html"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+
+    <title>edit</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/static/css/bootstrap.css">
+	<script src="/static/js/bootstrap.js"></script>
+	<script src="/static/js/jquery-3.4.1.js"></script>
+	  <script src="/static/js/blogAdd.js"></script>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+		<div class="row"  >
+			<div class="col-md-12">
+				<h3><strong>添加博客</strong></h3>
+			</div>
+		</div>
+
+
+	<div class="row">
+		<div class="col-md-12">
+			<form role="form" id="blog_form">
+				<div class="form-group">
+					 
+					<label for="title">
+						标题：
+					</label>
+					<input type="text" class="form-control" id="title" name="title" style="margin: 10px">
+				</div>
+				<div class="form-group">
+
+					<label for="kind">
+						分类：
+					</label>
+{{/*					<input type="password" class="form-control" id="exampleInputPassword1">*/}}
+					<select id="kind" name="kind" class="form-select" style="margin: 10px"></select>
+				</div>
+				<div class="form-group">
+					<label for="content">正文：</label><textarea id="content" name="content" style="width: 100%;height: 500px;margin: 10px"></textarea>
+				</div>
+
+				<div class="btn btn-primary" id="create_blog">
+					保存
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+  </body>
+</html>
+{{end}}

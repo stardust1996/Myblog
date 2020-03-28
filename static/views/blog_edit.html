@@ -1,0 +1,74 @@
+{{define "blog_edit.html"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+
+    <title>edit</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/static/css/bootstrap.css">
+	<script src="/static/js/bootstrap.js"></script>
+	<script src="/static/js/jquery-3.4.1.js"></script>
+	  <script src="/static/js/blogEdit.js"></script>
+  </head>
+  <body>
+
+    <div class="container-fluid">
+		<div class="row"  >
+			<div class="col-md-12">
+				<h3><strong>博客列表</strong></h3>
+			</div>
+		</div>
+
+		<div class="row" id="title_list">
+			<div class="col-md-12">
+				<table class="table">
+					<thead class="thead-light">
+					<tr>
+						<th>标题</th>
+						<th>分类</th>
+						<th style="text-align: center">操作</th>
+					</tr>
+					</thead>
+					<tbody id="blog_list">
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	<div class="row" id="edit" style="display: none">
+		<div class="col-md-12">
+			<form role="form" id="edit_blog_form">
+				<input type="hidden" id="edit_Id" name="id">
+				<div class="form-group">
+					 
+					<label for="edit_title">
+						标题：
+					</label>
+					<input type="text" class="form-control" id="edit_title" name="title" style="margin: 10px">
+				</div>
+				<div class="form-group">
+
+					<label for="edit_kind">
+						分类：
+					</label>
+{{/*					<input type="password" class="form-control" id="exampleInputPassword1">*/}}
+					<select id="edit_kind" name="kind" class="form-select" style="margin: 10px"></select>
+				</div>
+				<div class="form-group">
+					<label for="edit_content">正文：</label><textarea id="edit_content" name="content" style="width: 100%;height: 500px;margin: 10px"></textarea>
+				</div>
+
+				<div class="btn btn-primary" id="edit_blog">
+					保存
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+  </body>
+</html>
+{{end}}

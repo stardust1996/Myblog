@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>藏星</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/static/css/bootstrap.css">
+	  <link rel="stylesheet" href="/static/css/pro.css">
+	<script src="/static/js/bootstrap.js"></script>
+	<script src="/static/js/jquery-3.4.1.js"></script>
+	<script src="/static/js/index.js"></script>
+  </head>
+  <body>
+    <div class="container">
+		{{template "head.html"}}
+	<div class="row">
+		<div class="col-md-12">
+			<div class="page-header">
+				<div style="display: block;height: 55px;width: 1px"></div>
+				{{/*<h1 >被遮住了</h1><br>*/}}
+				<h1>
+					藏星 <small style="font-family: 华文行楷,serif">一起来数星星啊</small>
+				</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-8" id="blogListBox">
+					{{/*博客列表*/}}
+					{{range $index,$blog := .result.bList}}
+						<div class="row index-blog-show-box" >
+							<div class="col-md-12">
+								<h2>
+									{{$blog.Title}}
+								</h2>
+								<p class="index-blog-show-p">
+									{{/*{{$content :=    $blog.content[:100]}}*/}}
+									{{$blog.Content}}
+								</p>
+								<p>
+									<a class="btn btn-primary" href="/blog/{{$blog.Id}}">View details »</a>
+								</p>
+							</div>
+						</div>
+					{{end}}
+					{{/*分页*/}}
+					<div class="row">
+						<div class="col-md-12">
+							<nav class="pagination-lg" >
+								<script>
+									function initPage() {
+										{{$page := .result.page}}
+										var pageTNum ={{$page.TotalPagesNum}}
+										//		console.log(pageTNum);
+										var pageList;
+										if ( pageTNum === 1){
+											pageList =$("<ul class=\"pagination\">\n" +
+													"\t\t\t\t\t\t\t\t\t\t<li class=\"page-item\">\n" +
+													"\t\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"page-link\" style=\"pointer-events: none\">Previous</a>\n" +
+													"\t\t\t\t\t\t\t\t\t\t</li>\n" +
+													"\t\t\t\t\t\t\t\t\t\t\t<li class=\"page-item\">\n" +
+													"\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"page-link\" href=\"#\" style=\"pointer-events: none\">1</a>\n" +
+													"\t\t\t\t\t\t\t\t\t\t\t</li>\n" +
+													"\t\t\t\t\t\t\t\t\t\t<li class=\"page-item\">\n" +
+													"\t\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"page-link\" style=\"pointer-events: none\" >Next</a>\n" +
+													"\t\t\t\t\t\t\t\t\t\t</li>\n" +
+													"\t\t\t\t\t\t\t\t\t</ul>\n" +
+													"\t\t\t\t\t\t\t\t");
+											$("#page").append(pageList)
+										}else {
+											var current = {{$page.CurrentPage}}
+											pageList = $("<li class=\"page-item\">\n" +
+													"\t\t\t\t\t\t\t\t\t\t\t<a href=\"/blogs?pNum="+(current-1)+"\" class=\"page-link \"{{if eq $page.CurrentPage  1}} style=\"pointer-events: none\"  {{end}}>Previous</a>\n" +
+													"\t\t\t\t\t\t\t\t\t\t</li>");
+											$("#page").append(pageList);
+											for (var i = 1;i<=pageTNum ;i++){
+												var p = "<li class=\"page-item\">\n" +
+														"\t\t\t\t\t\t\t\t\t\t\t\t<a class=\"page-link\" href=\"/blogs?pNum="+i+"\" >"+i+"</a>\n" +
+														"\t\t\t\t\t\t\t\t\t\t\t</li>";
+												$("#page").append(p)
+											}
+											var last ="<li class=\"page-item\">\n" +
+												"\t\t\t\t\t\t\t\t\t\t\t<a href=\"/blogs?pNum="+(current+1)+"\" class=\"page-link\"{{if eq $page.CurrentPage  $page.TotalPagesNum}} style=\"pointer-events: none\"  {{end}}>Next</a>\n" +
+												"\t\t\t\t\t\t\t\t\t\t</li>";
+											$("#page").append(last)
+										}
+										//console.log(pageList);
+										//$("#page").append(pageList)
+									}
+								</script>
+								{{/*{{$page := .result.page}}
+								{{if eq $page.TotalPagesNum 1}}*/}}
+									<ul class="pagination" id="page" >
+										{{/*<li class="page-item">
+											<a href="#" class="page-link" style="pointer-events: none">Previous</a>
+										</li>
+											<li class="page-item">
+												<a class="page-link" href="#" style="pointer-events: none">1</a>
+											</li>
+										<li class="page-item">
+											<a href="#" class="page-link" style="pointer-events: none" >Next</a>
+										</li>*/}}
+									</ul>
+								{{/*{{else}}*/}}
+									{{/*<ul class="pagination">
+										<li class="page-item">
+											<a href="/blogs?pNum=1" class="page-link "{{if eq $page.CurrentPage  0}} style="pointer-events: none"  {{end}}>Previous</a>
+										</li>
+										{{range $nums := $page.TotalPagesNum}}
+											<li class="page-item">
+												<a class="page-link" href="/blogs?pNum={{$nums}}" >{{$nums}}</a>
+											</li>
+										{{end}}
+										<li class="page-item">
+											<a href="/blogs?pNum={{$page.TotalPagesNum}}" class="page-link"{{if eq $page.CurrentPage  $page.TotalPagesNum}} style="pointer-events: none"  {{end}}>Next</a>
+										</li>
+									</ul>*/}}
+								{{/*{{end}}*/}}
+
+							</nav>
+						</div>
+					</div>
+				</div>
+				{{/*右边栏*/}}
+				{{template "right.html"}}
+
+					<div class="row">
+						<div class="col-md-12">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+  </body>
+
+</html>

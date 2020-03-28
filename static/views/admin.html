@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+
+    <title>博客管理</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+    <script src="/static/js/bootstrap.js"></script>
+    <script src="/static/js/jquery-3.4.1.js"></script>
+    <script src="/static/js/admin.js"></script>
+    <script src="/static/js/classes.js"></script>
+    <script src="/static/js/users.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+    {{template "head.html"}}
+    <div style="height: 60px"></div>
+    <div class="row" style="margin: 15px">
+        <div class="col-md-12">
+            {{/*导航*/}}
+            <div class="row">
+                <div class="col-md-4">
+                    <div>
+                        <ul class="nav flex-column nav-pills">
+                            <li class="nav-item"><a class="nav-link active" href="#">博客管理</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">写博客</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">用户管理</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#">分类管理</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-md-8" id="page">
+                    {{/*博客管理*/}}
+                    <div>{{template "blog_edit.html"}}</div>
+                    {{/*添加博客*/}}
+                    <div  style="display: none">{{template "blog_add.html"}}</div>
+                    {{/*用户管理*/}}
+                    <div  style="display: none">{{template "users.html"}}</div>
+                    {{/*分类管理*/}}
+                    <div  style="display: none">{{template "classes.html"}}</div>
+                </div>
+            </div>
+            <div class="row">
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

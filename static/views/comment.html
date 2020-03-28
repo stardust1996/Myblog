@@ -1,0 +1,53 @@
+{{define "comment.html"}}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Bootstrap 4, from LayoutIt!</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/css/bootstrap.css">
+        <link rel="stylesheet" href="/static/css/pro.css">
+        <script src="/static/js/bootstrap.js"></script>
+        <script src="/static/js/jquery-3.4.1.js"></script>
+        <script src="/static/js/comment.js"></script>
+
+    </head>
+    <body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-md-12" id="comments">
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <hr class="simple" color="#6f5499" />
+                                <form id='reviews_form'>
+                                    <input type='hidden' name='uid' id='uid'>
+                                    <input type='hidden' name='bid' id='bid'>
+                                    <div class="input-group mb-3">
+                                      <input type="text" class="form-control" name='content' >
+                                      <div class="input-group-append">
+                                          <div class="btn btn-success"  id="reviews">评论</div>
+                                          </div>
+                                      </div>
+                               </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+    </html>
+{{end}}

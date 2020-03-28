@@ -1,0 +1,87 @@
+{{define "user.html"}}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+
+    <title>登录</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/static/css/bootstrap.css">
+	<script src="/static/js/bootstrap.js"></script>
+	<script src="/static/js/jquery-3.4.1.js"></script>
+	  <script src="/static/js/user.js"></script>
+
+  </head>
+  <body>
+
+    <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-4">
+				</div>
+				<div class="col-md-4">
+					<form role="form" id="user_form">
+						<div class="form-group">
+							 
+							<label for="username">
+								用户名：
+							</label>
+							<input type="text" class="form-control" id="username" name="username">
+						</div>
+						<div class="form-group">
+							 
+							<label for="password">
+								密 码：
+							</label>
+							<input type="password" class="form-control" id="password" name="password">
+						</div>
+						{{/*<div class="form-group">
+
+							<label for="password_confirm">
+								密码确认：
+							</label>
+							<input type="password" class="form-control" id="password_confirm" name="password_confirm">
+						</div>*/}}
+						{{/*<button type="submit" class="btn btn-primary">
+							Submit
+						</button>*/}}
+					</form>
+					<div class="row">
+						<div class="col-md-6">
+							 
+							<button type="button" class="btn btn-block btn-lg btn-primary" onclick="signIn()">
+								登录
+							</button>
+						</div>
+						<div class="col-md-6">
+							 
+							<button type="button" class="btn btn-lg btn-outline-primary btn-block" onclick="signUp()">
+								注册
+							</button>
+						</div>
+					</div>
+					<div class="row" id="alert_box" style="display: none">
+						<div class="alert alert-dismissable alert-warning" >
+
+							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+								×
+							</button>
+							<h4>
+								错误!
+							</h4><div style="display: inline-block" id="alert"><strong>错误!</strong> Best check yo self, you're not looking too good.</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+  </body>
+</html>
+{{end}}
