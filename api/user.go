@@ -59,7 +59,8 @@ func UserLogout(c *gin.Context) {
 func UserLogin(c *gin.Context) {
 	if u := CurrentUser1(c);u != nil{
 		//如果已经登录跳转主页
-		c.Request.URL.Path="/blogs"
+		c.Redirect(http.StatusMovedPermanently,"/blogs")
+		//c.Request.URL.Path="/blogs"
 		//GetList(c)
 	}else {
 		c.HTML(200,"user.html",gin.H{})
